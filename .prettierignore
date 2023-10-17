@@ -1,0 +1,12 @@
+/.vscode
+/.angular
+/.sass-cache
+.DS_Store
+/dist
+/tmp
+/out-tsc
+/bazel-out
+/node_modules
+/coverage
+/typings
+Thumbs.db
