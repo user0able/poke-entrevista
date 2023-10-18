@@ -16,5 +16,21 @@
   "eslint.workingDirectories": [
     "./"
   ],
-  "prettier.configPath": ".prettierrc"
+  "prettier.configPath": ".prettierrc",
+  "angular.enable-strict-mode-prompt": false,
+  "eslint.format.enable": false,
+  "errorLens.statusBarMessageTemplate": "$count",
+  "errorLens.delayMode": "debounce",
+  "errorLens.gutterIconSet": "circle",
+  "errorLens.messageBackgroundMode": "line",
+  "errorLens.messageEnabled": true,
+  "errorLens.scrollbarHackEnabled": true,
+  "errorLens.statusBarMessageEnabled": true,
+  "errorLens.statusBarMessageAlignment": "right",
+  "errorLens.statusBarIconsAlignment": "left",
+  "errorLens.statusBarCommand": "goToLine",
+  "errorLens.followCursor": "allLines",
+  "errorLens.closestProblemMultiline": {
+    "preferSameLineMultiplier": "0"
+  }
 }
