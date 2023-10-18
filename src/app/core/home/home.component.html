@@ -1,73 +1,95 @@
-<button
-  mat-button
-  (click)="resetPokemons()"
+<mat-toolbar>
+  <span
+    ><img
+      class="logo"
+      src="assets/img/poke-logo.png"
+      alt=""
+  /></span>
+</mat-toolbar>
+<mat-grid-list
+  cols="2"
+  rowHeight="150px"
+  rowWidth="300px"
 >
-  Reset Pokemon deleted
-</button>
-<mat-form-field>
-  <mat-label>Poke Search:</mat-label>
-  <input
-    matInput
-    placeholder="Pokemon name..."
-    (keyup)="goSearch()"
-    [(ngModel)]="txtSearch"
-  />
-</mat-form-field>
-<mat-table
-  [dataSource]="dataSource"
-  matSort
->
-  <ng-container matColumnDef="id">
-    <mat-header-cell
-      *matHeaderCellDef
-      mat-sort-header
+  <mat-grid-tile>
+    <mat-form-field>
+      <mat-label>Poke Search:</mat-label>
+      <input
+        matInput
+        placeholder="Pokemon name..."
+        (keyup)="goSearch()"
+        [(ngModel)]="txtSearch"
+      />
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <button
+      (click)="resetPokemons()"
+      mat-raised-button
+      color="primary"
     >
-      ID
-    </mat-header-cell>
-    <mat-cell *matCellDef="let pokemon"> {{ pokemon.id }} </mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="name">
-    <mat-header-cell
-      *matHeaderCellDef
-      mat-sort-header
-    >
-      Name
-    </mat-header-cell>
-    <mat-cell *matCellDef="let pokemon">
-      {{ pokemon.name | titlecase }}
-    </mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="weight">
-    <mat-header-cell
-      *matHeaderCellDef
-      mat-sort-header
-    >
-      Weight
-    </mat-header-cell>
-    <mat-cell *matCellDef="let pokemon"> {{ pokemon.weight }} </mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="height">
-    <mat-header-cell
-      *matHeaderCellDef
-      mat-sort-header
-    >
-      Height
-    </mat-header-cell>
-    <mat-cell *matCellDef="let pokemon"> {{ pokemon.height }} </mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="actions">
-    <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
-    <mat-cell *matCellDef="let pokemon">
-      <button
-        (click)="deletePokemon(pokemon)"
-        mat-mini-fab
-        color="warn"
+      Reset Pokemon deleted
+    </button>
+  </mat-grid-tile>
+</mat-grid-list>
+<div class="content-table">
+  <mat-table
+    [dataSource]="dataSource"
+    matSort
+  >
+    <ng-container matColumnDef="id">
+      <mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
       >
-        <mat-icon>delete</mat-icon>
-      </button>
-    </mat-cell>
-  </ng-container>
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-</mat-table>
-<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        ID
+      </mat-header-cell>
+      <mat-cell *matCellDef="let pokemon"> {{ pokemon.id }} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+      >
+        Name
+      </mat-header-cell>
+      <mat-cell *matCellDef="let pokemon">
+        {{ pokemon.name | titlecase }}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="weight">
+      <mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+      >
+        Weight
+      </mat-header-cell>
+      <mat-cell *matCellDef="let pokemon"> {{ pokemon.weight }} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="height">
+      <mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+      >
+        Height
+      </mat-header-cell>
+      <mat-cell *matCellDef="let pokemon"> {{ pokemon.height }} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
+      <mat-cell *matCellDef="let pokemon">
+        <button
+          (click)="deletePokemon(pokemon)"
+          mat-mini-fab
+          color="warn"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    <mat-spinner *ngIf="!dataSource"></mat-spinner>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

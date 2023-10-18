@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Pokemon } from '@services/pokeapi.models';
@@ -18,7 +19,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
   dataSource!: MatTableDataSource<Pokemon>;
   txtSearch = '';
 
-  constructor(private poke$: PokeapiService) {}
+  constructor(
+    private _snackBar: MatSnackBar,
+    private poke$: PokeapiService
+  ) {}
 
   ngOnInit() {
     this.poke$.listPokemonResults().subscribe({
@@ -32,6 +36,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
       complete: () => {
         this.setAttrsTable();
       },
+    });
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
     });
   }
 
@@ -60,9 +70,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
       );
       this.setAttrsTable();
     }
+    this.openSnackBar(`${pokemon.name} deleted`, 'OK');
   }
 
   resetPokemons() {
+    this.openSnackBar('Resetting Pokemons...', 'OK');
     this.dataSource = new MatTableDataSource<Pokemon>(this.pokemonList);
     this.setAttrsTable();
   }

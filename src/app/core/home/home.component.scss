@@ -1,0 +1,56 @@
+:host {
+  max-width: 600px;
+  margin: 0 auto;
+  border: 1px solid red;
+}
+.mat-mdc-table {
+  background-color: rgba($color: #eee, $alpha: 0.1) !important;
+}
+
+.mat-mdc-paginator {
+  margin-top: 5px;
+  background-color: rgba($color: #eee, $alpha: 0.3) !important;
+  border-radius: 15px;
+}
+
+.mat-toolbar {
+  padding-top: 30px;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  background-color: transparent;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+}
+
+::ng-deep div.mat-mdc-select-panel {
+  background-color: rgba($color: #eee, $alpha: 0.4) !important;
+}
+
+.logo {
+  max-height: 50px;
+  width: auto;
+}
+
+mat-grid-list {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 700px;
+}
+
+mat-spinner {
+  margin: 0 auto;
+  height: 100vh;
+  display: block;
+}
+
+::ng-deep .mdc-text-field--filled {
+  background-color: transparent !important;
+}
+
+.content-table {
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 15px;
+}
